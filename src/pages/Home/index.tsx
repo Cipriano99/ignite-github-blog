@@ -1,3 +1,10 @@
+import { UserProfile } from '../../components/UserProfile'
+import { HomeContainer } from './styles'
+
 export const Home = () => {
-  return <h1>HOME</h1>
+  return (
+    <HomeContainer>
+      <UserProfile />
+    </HomeContainer>
+  )
 }

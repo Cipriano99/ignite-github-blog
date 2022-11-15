@@ -7,4 +7,5 @@ export const HeaderContainer = styled.header`
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: content-box;
+  background-position: center;
 `
