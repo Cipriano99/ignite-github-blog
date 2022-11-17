@@ -13,4 +13,13 @@ export const defaultTheme = {
   'base-profile': '#0b1b2b',
   'base-background': '#071422',
   'base-input': '#040f1a',
+
+  'title-s': '1.125rem',
+  'title-m': '1.25rem',
+  'title-l': '1.5rem',
+
+  'text-s': '0.875rem',
+  'text-m': '1rem',
+
+  'text-link': '0.75rem',
 }

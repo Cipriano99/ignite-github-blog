@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SeachPostContainer = styled.div`
+export const SearchPostContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

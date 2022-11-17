@@ -1,27 +1,43 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
-import { githubApi } from '../api/axios'
+import { githubBlogApi } from '../services/githubBlogApi'
+import { PostType } from '../types/PostsType'
 import { UserType } from '../types/UserType'
 
 interface BlogContextProps {
   user: UserType
+  postList: PostType[]
 }
 
 export const BlogContext = createContext({} as BlogContextProps)
 
 export const BlogContextProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState({} as UserType)
+  const [postList, setPostList] = useState<PostType[] | []>([])
 
   const getUserData = async () => {
-    const { data } = await githubApi.get('/users/Cipriano99')
+    const data = await githubBlogApi.getUserData('Cipriano99')
 
     setUser(data)
   }
 
+  const getPostList = async () => {
+    const postsData = await githubBlogApi.getPostList(
+      'Cipriano99',
+      'ignite-github-blog',
+      '',
+    )
+
+    setPostList(postsData)
+  }
+
   useEffect(() => {
     getUserData()
+    getPostList()
   }, [])
 
   return (
-    <BlogContext.Provider value={{ user }}>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={{ user, postList }}>
+      {children}
+    </BlogContext.Provider>
   )
 }
