@@ -25,15 +25,15 @@ export const UserProfile = () => {
 
         <div className="infos">
           <div className="info">
-            <FaGithub size={24} />
+            <FaGithub size={18} />
             {user.login}
           </div>
           <div className="info">
-            <FaLocationArrow size={24} />
+            <FaLocationArrow size={18} />
             {user.location}
           </div>
           <div className="info">
-            <FaUsers size={24} />
+            <FaUsers size={18} />
             {user.followers}
           </div>
         </div>

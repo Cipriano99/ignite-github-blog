@@ -2,20 +2,20 @@ import { githubApi } from '../api/axios'
 import { PostType } from '../types/PostsType'
 import { UserType } from '../types/UserType'
 
+import { baseUser } from '../constants/user'
+
+const { repoName, username } = baseUser
+
 export class GitHubBlogApi {
-  public async getUserData(username: string): Promise<UserType> {
+  public async getUserData(): Promise<UserType> {
     const response = await githubApi.get(`/users/${username}`)
 
     return response.data
   }
 
-  public async getPostList(
-    username: string,
-    repo: string,
-    texto: string,
-  ): Promise<PostType[] | []> {
+  public async getPostList(texto: string): Promise<PostType[] | []> {
     const response = await githubApi.get(
-      `/search/issues?q=${texto} repo:${username}/${repo}`,
+      `/search/issues?q=${texto} repo:${username}/${repoName}`,
     )
 
     if (!response.data) {
@@ -25,13 +25,9 @@ export class GitHubBlogApi {
     return response.data.items
   }
 
-  public async getPostData(
-    username: string,
-    repo: string,
-    postId: string,
-  ): Promise<PostType> {
+  public async getPostData(postId: string): Promise<PostType> {
     const response = await githubApi.get(
-      `/repos/${username}/${repo}/issues/${postId}`,
+      `/repos/${username}/${repoName}/issues/${postId}`,
     )
 
     return response.data

@@ -18,8 +18,9 @@ export const PostCard: FC<PostCardProps> = ({
   createdAt,
 }) => {
   const postedAt = formatDistanceToNow(new Date(createdAt), { locale: ptBR })
+
   return (
-    <PostCardContainer href={`/${number}`}>
+    <PostCardContainer to={`/${number}`}>
       <div className="title">
         <strong>{title}</strong>
         <span>há {postedAt}</span>

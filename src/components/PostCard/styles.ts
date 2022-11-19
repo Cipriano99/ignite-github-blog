@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const PostCardContainer = styled.a`
+export const PostCardContainer = styled(Link)`
   width: 100%;
   height: 100%;
   max-height: 260px;

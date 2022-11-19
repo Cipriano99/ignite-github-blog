@@ -15,17 +15,13 @@ export const BlogContextProvider = ({ children }: { children: ReactNode }) => {
   const [postList, setPostList] = useState<PostType[] | []>([])
 
   const getUserData = async () => {
-    const data = await githubBlogApi.getUserData('Cipriano99')
+    const data = await githubBlogApi.getUserData()
 
     setUser(data)
   }
 
   const getPostList = async () => {
-    const postsData = await githubBlogApi.getPostList(
-      'Cipriano99',
-      'ignite-github-blog',
-      '',
-    )
+    const postsData = await githubBlogApi.getPostList('')
 
     setPostList(postsData)
   }
