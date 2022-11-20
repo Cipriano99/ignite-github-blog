@@ -1,23 +1,21 @@
 import { useBlogContext } from '../../hooks/useBlogContext'
+import { FormSearch } from '../FormSearch'
 import { SearchPostContainer } from './styles'
 
 export const SearchPost = () => {
-  const { postList } = useBlogContext()
+  const { displayPostList } = useBlogContext()
 
-  const howManyPosts = postList.length
+  const howManyPosts = displayPostList.length
 
   return (
     <SearchPostContainer>
       <div>
         <label htmlFor="posts">Publicações</label>
         <span>
-          {howManyPosts}{' '}
-          {howManyPosts === 0 || howManyPosts > 1
-            ? 'publicações'
-            : 'publicação'}
+          {howManyPosts} {howManyPosts !== 1 ? 'publicações' : 'publicação'}
         </span>
       </div>
-      <input type="text" name="posts" placeholder="Buscar conteúdo" />
+      <FormSearch />
     </SearchPostContainer>
   )
 }

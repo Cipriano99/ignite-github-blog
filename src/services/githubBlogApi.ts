@@ -32,6 +32,18 @@ export class GitHubBlogApi {
 
     return response.data
   }
+
+  public async getPostBySearch(texto: string): Promise<PostType[] | []> {
+    const response = await githubApi.get(
+      `/search/issues?q=${texto}%20repo:${username}/${repoName}`,
+    )
+
+    if (!response.data) {
+      return []
+    }
+
+    return response.data.items
+  }
 }
 
 export const githubBlogApi = new GitHubBlogApi()
